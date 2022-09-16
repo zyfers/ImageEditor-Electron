@@ -1,0 +1,35 @@
+const {app, BrowserWindow } = require('electron')
+const url = require('url')
+
+let win = null // electron suggest to make this global because it do some stuff in background like garabage collection....so it needs to access the window
+
+function boot() {
+    console.log(process.type)
+    win = new BrowserWindow({
+        width: 1000,
+        height: 500,
+    })
+    win.loadURL(`file://${__dirname}/index.html`)
+
+    win2 = new BrowserWindow({
+        width: 500,
+        height: 250,
+        parent: win
+    })
+    win2.loadURL(`https://google.com`)
+    win2.on('closed', () => {
+        console.log('win2 was closed')
+    })
+}
+
+// electron run each window in different process
+// in chrome every tab is different process.. so if one crashes rest keeps working
+
+// Main and renderer are the two processes used by electron to actually run the application
+
+// everything in index.js runs in the main process
+// main process boots up the electron app
+// browserWindow, etc run in renderer process
+
+// some api are only available for main.....some are available for renderer and some for both like communication API (main process can talk to renderer process)
+app.on('ready', boot)

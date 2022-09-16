@@ -1,0 +1,16 @@
+{
+  "name": "image-editor",
+  "version": "1.0.0",
+  "description": "Best image editor (better than instagram)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zyfer",
+  "license": "ISC",
+  "dependencies": {
+    "electron-screenshot": "^1.0.5",
+    "electron-screenshot-service": "^4.0.3",
+    "image-size": "^0.8.3"
+  }
+}
